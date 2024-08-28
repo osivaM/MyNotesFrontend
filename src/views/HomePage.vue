@@ -5,7 +5,7 @@
             the <span class="highlight">MyNotes</span> project is designed to create<br>and conveniently manage notes and
             catalog them.
         </p>
-        <form @submit.prevent="handleSubmit" class="login-form">
+        <form @submit.prevent="login" class="login-form">
             <div class="form-group">
                 <label for="username">username ></label>
                 <input type="text" id="username" v-model="username" required />
@@ -24,23 +24,52 @@
 </template>
 
 <script>
+import axios from 'axios';
+import { jwtDecode } from 'jwt-decode';
+import { useRouter } from 'vue-router';
+
 export default {
     data() {
         return {
             username: '',
-            password: ''
+            password: '',
+            token: ''
         };
     },
+    setup() {
+        const router = useRouter();
+
+        return { router };
+    },
     methods: {
-        handleSubmit() {
-            console.log('Username:', this.username);
-            console.log('Password:', this.password);
-        },
         redirectToTelegram() {
             window.open('https://t.me/my_notes_project_bot', '_blank');
         },
         redirectToGitHub() {
             window.open('https://github.com/osivaM/MyNotes', '_blank');
+        },
+        async login() {
+            try {
+                const response = await axios.post('http://localhost:8080/api/authentication/login', {
+                    username: this.username,
+                    password: this.password
+                });
+
+                this.token = response.data.token;
+                localStorage.setItem('token', this.token);
+                axios.defaults.headers.common['Authorization'] = `Bearer ${this.token}`;
+
+                const decodedToken = jwtDecode(this.token);
+                const rolesName = decodedToken.roles.map(item => item.authority);
+
+                if (rolesName.includes('ADMIN')) {
+                    this.router.push('/adimn/dashboard');
+                } else if (rolesName.includes('USER')) {
+                    this.router.push('/dashboard');
+                }
+            } catch(error) {
+                console.error('Login failed: ', error);
+            }
         }
     }
 };
