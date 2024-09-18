@@ -31,7 +31,7 @@ async function createCategoryHandler() {
     }).catch(function(error) {
         if (error.response.status === 400) {
             categoryName.value = '';
-            errorMessage.value = error.response.date.message;
+            errorMessage.value = error.response.data.message;
         }
     });
 }

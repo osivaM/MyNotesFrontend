@@ -11,9 +11,6 @@ async function clickHandler(item) {
     event.value = item;
 
     if (event.value === 'delete note') {
-
-        console.log('note id = ', note.value.id);
-
         await axios({
             url: '/delete-note',
             baseURL: 'http://localhost:8080/api/content',
@@ -44,8 +41,8 @@ function formatDate(dateStr) {
 
     return `${year}-${month}-${day} ${hours}:${minutes}`;
 }
-async function editNote() {
-    await axios({
+function editNote() {
+    axios({
         url: '/edit-note',
         baseURL: 'http://localhost:8080/api/content',
         method: 'patch',

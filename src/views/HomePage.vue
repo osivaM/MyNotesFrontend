@@ -63,7 +63,7 @@ export default {
                 const rolesName = decodedToken.roles.map(item => item.authority);
 
                 if (rolesName.includes('ADMIN')) {
-                    this.router.push('/adimn/dashboard');
+                    this.router.push('/admin/dashboard');
                 } else if (rolesName.includes('USER')) {
                     this.router.push('/dashboard');
                 }

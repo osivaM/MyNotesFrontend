@@ -85,6 +85,9 @@ function eventHandler(select) {
             <div v-if="activeComponent === 'ListOfCategories'" class="menu-buttons">
                 <button class="menu-button" @click="eventHandler('edit user data')">edit user data</button>
             </div>
+            <div class="logout-button">
+                <button type="button">logout</button>
+            </div>
         </div>
     </div>
 </template>

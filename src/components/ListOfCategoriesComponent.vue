@@ -41,30 +41,4 @@ function clickHandler(item) {
 .list-of-categories-content {
     margin-bottom: 20px;
 }
-
-/* .select-category-button {
-    width: 70%;
-    margin: 10px;
-    padding: 10px;
-    background-color: #384c61;
-    color: #dbdee4;
-    border: 2px solid #ccc;
-    border-radius: 4px;
-    font-size: 1.3em;
-    cursor: pointer;
-    font-family: 'better-vcr-5.4', sans-serif;
-} */
-
-/* .menu-button {
-    width: 90%;
-    margin: 10px;
-    padding: 10px;
-    background-color: #3368a1;
-    color: #dbdee4;
-    border: 2px solid #ccc;
-    border-radius: 4px;
-    font-size: 1.3em;
-    cursor: pointer;
-    font-family: 'better-vcr-5.4', sans-serif;
-} */
 </style>
