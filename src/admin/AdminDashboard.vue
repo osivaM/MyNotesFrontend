@@ -4,6 +4,7 @@ import axios from 'axios';
 import router from '@/router';
 
 const users = ref();
+const countUniqueUsers = ref();
 const showApplyButton = ref(false);
 const listOfIds = ref([]);
 
@@ -16,6 +17,15 @@ axios({
     }
 }).then(function (response) {
     users.value = response.data;
+});
+axios({
+    url: '/unique-users',
+    baseURL: 'http://localhost:8080/api/admin',
+    headers: {
+        'Authorization': `Bearer ${localStorage.getItem('token')}`
+    }
+}).then(function(response) {
+    countUniqueUsers.value = response.data.count;
 });
 
 function formatDate(dateStr) {
@@ -81,6 +91,7 @@ function logout() {
     <div class="admin-container">
         <h1 class="title">AdminPage</h1>
         <p>Number of users: {{ users ? users.length : 0 }}</p>
+        <p>Number of unique users: {{ countUniqueUsers }}</p>
         <hr />
         <div class="user-list">
             <div v-for="item in users" :key="item.id">
