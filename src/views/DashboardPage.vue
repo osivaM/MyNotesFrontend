@@ -6,6 +6,7 @@ import Note from '../components/NoteComponent.vue'
 import CreateNote from '../components/CreateNoteComponent.vue'
 import EditUserData from '../components/EditUserDataComponent.vue'
 import { ref } from 'vue';
+import router from '@/router';
 
 const event = ref(null);
 let activeComponent = ref('ListOfCategories');
@@ -49,6 +50,10 @@ function eventHandler(select) {
         }
     }
 }
+function logout() {
+    localStorage.removeItem('token');
+    router.push('/');
+}
 </script>
 
 <template>
@@ -85,8 +90,8 @@ function eventHandler(select) {
             <div v-if="activeComponent === 'ListOfCategories'" class="menu-buttons">
                 <button class="menu-button" @click="eventHandler('edit user data')">edit user data</button>
             </div>
-            <div class="logout-button">
-                <button type="button">logout</button>
+            <div class="logut-button-container">
+                <button type="button" class="logut-button" @click="logout" style="width: 35%;">logout</button>
             </div>
         </div>
     </div>

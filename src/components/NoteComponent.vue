@@ -11,19 +11,25 @@ async function clickHandler(item) {
     event.value = item;
 
     if (event.value === 'delete note') {
-        await axios({
-            url: '/delete-note',
-            baseURL: 'http://localhost:8080/api/content',
-            method: 'delete',
-            headers: {
-                'Authorization': `Bearer ${localStorage.getItem('token')}`
-            },
-            params: {
-                id: note.value.id
-            }
-        }).then(function () {
-            event.value = 'back from note';
-        })
+        const isConfirmed = confirm('Confirm the deletion of the note');
+
+        if (isConfirmed) {
+            await axios({
+                url: '/delete-note',
+                baseURL: 'http://localhost:8080/api/content',
+                method: 'delete',
+                headers: {
+                    'Authorization': `Bearer ${localStorage.getItem('token')}`
+                },
+                params: {
+                    id: note.value.id
+                }
+            }).then(function () {
+                event.value = 'back from note';
+            })
+        } else {
+            return;
+        }
     }
 
     if (event.value) {
@@ -55,7 +61,7 @@ function editNote() {
             link: note.value.link,
             content: note.value.content
         }
-    }).catch(function(error) {
+    }).catch(function (error) {
         if (error.response.status === 400) {
             errorMessage.value = error.response.data.message;
         }

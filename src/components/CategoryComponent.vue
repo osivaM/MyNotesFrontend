@@ -22,19 +22,25 @@ async function clickHandler(item) {
     event.value = item;
 
     if (event.value === 'delete category') {
-        await axios({
-            url: '/delete-category',
-            baseURL: 'http://localhost:8080/api/content',
-            method: 'delete',
-            headers: {
-                'Authorization': `Bearer ${localStorage.getItem('token')}`
-            },
-            params: {
-                id: category.value.id
-            }
-        }).then(function() {
-            event.value = 'back from category';
-        });
+        const isConfirmed = confirm('Confirm the deletion of the category');
+
+        if (isConfirmed) {
+            await axios({
+                url: '/delete-category',
+                baseURL: 'http://localhost:8080/api/content',
+                method: 'delete',
+                headers: {
+                    'Authorization': `Bearer ${localStorage.getItem('token')}`
+                },
+                params: {
+                    id: category.value.id
+                }
+            }).then(function () {
+                event.value = 'back from category';
+            });
+        } else {
+            return;
+        }
     }
 
     if (event.value) {

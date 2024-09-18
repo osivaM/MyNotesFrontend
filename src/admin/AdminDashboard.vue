@@ -1,6 +1,7 @@
 <script setup>
 import { ref } from 'vue';
 import axios from 'axios';
+import router from '@/router';
 
 const users = ref();
 const showApplyButton = ref(false);
@@ -70,6 +71,10 @@ function saveChanges() {
         listOfIds.value = [];
     });
 }
+function logout() {
+    localStorage.removeItem('token');
+    router.push('/');
+}
 </script>
 
 <template>
@@ -96,6 +101,9 @@ function saveChanges() {
             <button type="button" @click="saveChanges">apply</button>
         </div>
         <hr />
+        <div class="logut-button-container">
+            <button type="button" class="logut-button" @click="logout">logout</button>
+        </div>
     </div>
 </template>
 

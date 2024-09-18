@@ -92,4 +92,17 @@ textarea {
 .create-button:hover {
 	background-color: #306aa8;
 }
+
+.logut-button {
+    width: 10%;
+	padding: 10px;
+	margin: 10px;
+	background-color: #384350;
+	color: #dbdee4;
+	border: 2px solid #ccc;
+	border-radius: 4px;
+	font-size: 1.3em;
+	cursor: pointer;
+	font-family: 'better-vcr-5.4', sans-serif;
+}
 </style>
