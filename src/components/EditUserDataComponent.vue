@@ -14,7 +14,7 @@ const errorMessage = ref('');
 await axios({
     url: '/user-data',
     method: 'get',
-    baseURL: 'http://mynotesproject.freemyip.com/api/user',
+    baseURL: 'https://mynotesproject.freemyip.com/api/user',
     headers: {
         'Authorization': `Bearer ${localStorage.getItem('token')}`
     }
@@ -39,7 +39,7 @@ async function editData() {
     await axios({
         url: '/edit-user-data',
         method: 'patch',
-        baseURL: 'http://mynotesproject.freemyip.com/api/user',
+        baseURL: 'https://mynotesproject.freemyip.com/api/user',
         headers: {
             'Authorization': `Bearer ${localStorage.getItem('token')}`
         },
@@ -54,7 +54,7 @@ async function editData() {
         await axios({
             url: '/login',
             method: 'post',
-            baseURL: 'http://mynotesproject.freemyip.com/api/authentication',
+            baseURL: 'https://mynotesproject.freemyip.com/api/authentication',
             data: {
                 username: userUsername.value,
                 password: userPassword.value
