@@ -16,7 +16,7 @@ async function clickHandler(item) {
         if (isConfirmed) {
             await axios({
                 url: '/delete-note',
-                baseURL: 'http://localhost:8080/api/content',
+                baseURL: 'http://localhost:7070/api/content',
                 method: 'delete',
                 headers: {
                     'Authorization': `Bearer ${localStorage.getItem('token')}`
@@ -50,7 +50,7 @@ function formatDate(dateStr) {
 function editNote() {
     axios({
         url: '/edit-note',
-        baseURL: 'http://localhost:8080/api/content',
+        baseURL: 'http://localhost:7070/api/content',
         method: 'patch',
         headers: {
             'Authorization': `Bearer ${localStorage.getItem('token')}`

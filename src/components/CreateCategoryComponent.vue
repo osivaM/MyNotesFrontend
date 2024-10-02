@@ -18,7 +18,7 @@ async function createCategoryHandler() {
     await axios({
         url: '/create-category',
         method: 'post',
-        baseURL: 'http://localhost:8080/api/content',
+        baseURL: 'http://localhost:7070/api/content',
         headers: {
             'Authorization': `Bearer ${localStorage.getItem('token')}`
         },

@@ -10,7 +10,7 @@ const listOfIds = ref([]);
 
 axios({
     url: '/users',
-    baseURL: 'http://localhost:8080/api/admin',
+    baseURL: 'http://localhost:7070/api/admin',
     method: 'get',
     headers: {
         'Authorization': `Bearer ${localStorage.getItem('token')}`
@@ -20,7 +20,7 @@ axios({
 });
 axios({
     url: '/unique-users',
-    baseURL: 'http://localhost:8080/api/admin',
+    baseURL: 'http://localhost:7070/api/admin',
     headers: {
         'Authorization': `Bearer ${localStorage.getItem('token')}`
     }
@@ -45,7 +45,7 @@ function deleteUser(userId) {
     if (isConfirmed) {
         axios({
             url: '/delete-user',
-            baseURL: 'http://localhost:8080/api/admin',
+            baseURL: 'http://localhost:7070/api/admin',
             method: 'delete',
             headers: {
                 'Authorization': `Bearer ${localStorage.getItem('token')}`
@@ -71,7 +71,7 @@ function saveChanges() {
     showApplyButton.value = false;
     axios({
         url: '/set-deletion-status',
-        baseURL: 'http://localhost:8080/api/admin',
+        baseURL: 'http://localhost:7070/api/admin',
         method: 'patch',
         headers: {
             'Authorization': `Bearer ${localStorage.getItem('token')}`
