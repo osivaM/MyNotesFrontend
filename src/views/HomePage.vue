@@ -50,7 +50,7 @@ export default {
         },
         async login() {
             try {
-                const response = await axios.post('https://mynotesproject.freemyip.com/api/authentication/login', {
+                const response = await axios.post(`${process.env.VUE_APP_API_URL}/api/authentication/login`, {
                     username: this.username,
                     password: this.password
                 });

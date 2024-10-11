@@ -18,7 +18,7 @@ async function createCategoryHandler() {
     await axios({
         url: '/create-category',
         method: 'post',
-        baseURL: 'https://mynotesproject.freemyip.com/api/content',
+        baseURL: `${process.env.VUE_APP_API_URL}/api/content`,
         headers: {
             'Authorization': `Bearer ${localStorage.getItem('token')}`
         },

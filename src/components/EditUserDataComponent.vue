@@ -14,7 +14,7 @@ const errorMessage = ref('');
 await axios({
     url: '/user-data',
     method: 'get',
-    baseURL: 'https://mynotesproject.freemyip.com/api/user',
+    baseURL: `${process.env.VUE_APP_API_URL}/api/user`,
     headers: {
         'Authorization': `Bearer ${localStorage.getItem('token')}`
     }
@@ -39,7 +39,7 @@ async function editData() {
     await axios({
         url: '/edit-user-data',
         method: 'patch',
-        baseURL: 'https://mynotesproject.freemyip.com/api/user',
+        baseURL: `${process.env.VUE_APP_API_URL}/api/user`,
         headers: {
             'Authorization': `Bearer ${localStorage.getItem('token')}`
         },
@@ -54,7 +54,7 @@ async function editData() {
         await axios({
             url: '/login',
             method: 'post',
-            baseURL: 'https://mynotesproject.freemyip.com/api/authentication',
+            baseURL: `${process.env.VUE_APP_API_URL}/api/authentication`,
             data: {
                 username: userUsername.value,
                 password: userPassword.value

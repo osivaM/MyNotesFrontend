@@ -10,7 +10,7 @@ const listOfIds = ref([]);
 
 axios({
     url: '/users',
-    baseURL: 'https://mynotesproject.freemyip.com/api/admin',
+    baseURL: `${process.env.VUE_APP_API_URL}/api/admin`,
     method: 'get',
     headers: {
         'Authorization': `Bearer ${localStorage.getItem('token')}`
@@ -20,7 +20,7 @@ axios({
 });
 axios({
     url: '/unique-users',
-    baseURL: 'https://mynotesproject.freemyip.com/api/admin',
+    baseURL: `${process.env.VUE_APP_API_URL}/api/admin`,
     headers: {
         'Authorization': `Bearer ${localStorage.getItem('token')}`
     }
@@ -45,7 +45,7 @@ function deleteUser(userId) {
     if (isConfirmed) {
         axios({
             url: '/delete-user',
-            baseURL: 'https://mynotesproject.freemyip.com/api/admin',
+            baseURL: `${process.env.VUE_APP_API_URL}/api/admin`,
             method: 'delete',
             headers: {
                 'Authorization': `Bearer ${localStorage.getItem('token')}`
@@ -71,7 +71,7 @@ function saveChanges() {
     showApplyButton.value = false;
     axios({
         url: '/set-deletion-status',
-        baseURL: 'https://mynotesproject.freemyip.com/api/admin',
+        baseURL: `${process.env.VUE_APP_API_URL}/api/admin`,
         method: 'patch',
         headers: {
             'Authorization': `Bearer ${localStorage.getItem('token')}`

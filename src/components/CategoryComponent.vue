@@ -5,7 +5,7 @@ import { ref, defineEmits, defineModel } from 'vue';
 const category = defineModel();
 const response = await axios({
     url: '/category',
-    baseURL: 'https://mynotesproject.freemyip.com/api/content',
+    baseURL: `${process.env.VUE_APP_API_URL}/api/content`,
     method: 'get',
     headers: {
         'Authorization': `Bearer ${localStorage.getItem('token')}`
@@ -27,7 +27,7 @@ async function clickHandler(item) {
         if (isConfirmed) {
             await axios({
                 url: '/delete-category',
-                baseURL: 'https://mynotesproject.freemyip.com/api/content',
+                baseURL: '${process.env.VUE_APP_API_URL}/api/content',
                 method: 'delete',
                 headers: {
                     'Authorization': `Bearer ${localStorage.getItem('token')}`

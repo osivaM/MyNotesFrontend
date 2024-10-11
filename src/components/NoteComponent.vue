@@ -16,7 +16,7 @@ async function clickHandler(item) {
         if (isConfirmed) {
             await axios({
                 url: '/delete-note',
-                baseURL: 'https://mynotesproject.freemyip.com/api/content',
+                baseURL: `${process.env.VUE_APP_API_URL}/api/content`,
                 method: 'delete',
                 headers: {
                     'Authorization': `Bearer ${localStorage.getItem('token')}`
@@ -50,7 +50,7 @@ function formatDate(dateStr) {
 function editNote() {
     axios({
         url: '/edit-note',
-        baseURL: 'https://mynotesproject.freemyip.com/api/content',
+        baseURL: `${process.env.VUE_APP_API_URL}/api/content`,
         method: 'patch',
         headers: {
             'Authorization': `Bearer ${localStorage.getItem('token')}`

@@ -4,7 +4,7 @@ import { ref, defineEmits } from 'vue';
 
 const response = await axios({
     url: '/categories',
-    baseURL: 'https://mynotesproject.freemyip.com/api/content',
+    baseURL: `${process.env.VUE_APP_API_URL}/api/content`,
     method: 'get',
     headers: {
         'Authorization': `Bearer ${localStorage.getItem('token')}`
